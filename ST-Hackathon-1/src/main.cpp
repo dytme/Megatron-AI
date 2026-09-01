@@ -104,8 +104,6 @@ void setup() {
 
 
 
-
-
 // █▀▄▀█ █▀█ ▀█▀ █▀█ █▀█   █▀▀ █▀█ █▄░█ ▀█▀ █▀█ █▀█ █░░
 // █░▀░█ █▄█ ░█░ █▄█ █▀▄   █▄▄ █▄█ █░▀█ ░█░ █▀▄ █▄█ █▄▄
 
@@ -221,9 +219,9 @@ void updateSensorData() {
 // █▀░ █▀█ █▄▄ █▄▄ █▄█ █▀█ █▄▄ █░█   █░▀░█ █▄█ █▄▀ ██▄
 
 bool isInFallbackMode = false;  // whether it follows the line or continues to steer in the old direction
-int fallbackDirection = 1;      // 0 = left, 1 = straight, 2 = right
+int fallbackSteer = 1;      // 0 = left, 1 = straight, 2 = right
 const int fallbackModeThreshold = 5;        // how many times must the robot think the line is missing before it goes into fallback mode
-const int fallbackDirectionThreshold = 50;  // difference between motor PWMs required to consider the robot as steering
+const int fallbackDirectionThreshold = 20;  // difference between motor PWMs required to consider the robot as steering
 const int fallbackLowLightThreshold = 50;   // minimum sensor reading (in PWM form) required to consider the robot as lost
                                             //      but won't it just stop? no: robot has momentum!! :3
 const int fallbackHighLightThreshold = 220; // in case the robot only sees the line (so theres a bunch of branches everywhere)
@@ -234,14 +232,15 @@ void computeFallbackDirection() {
 
     if (isInFallbackMode) return;
 
-    int tendency = averageRSensor - averageLSensor;
-    if (tendency > fallbackDirectionThreshold) fallbackDirection = 2;
-    else if (tendency < -fallbackDirectionThreshold) fallbackDirection = 0;
-    else fallbackDirection = 1;
+    int tendency = averageRSensor - averageLSensor; // which way does the robot already steer
+    if (tendency > fallbackDirectionThreshold) fallbackSteer = 2;
+    else if (tendency < -fallbackDirectionThreshold) fallbackSteer = 0;
+    else fallbackSteer = 1;
+
 }
 
 void fallbackMovement() {
-    switch(fallbackDirection) {
+    switch(fallbackSteer) {
         case 0:
             SetLeftMotor(0, false);
             SetRightMotor(200, false);
@@ -307,7 +306,7 @@ void loop() {
         Serial.print(averageRSensor);
         Serial.print("\n");
         Serial.print("Fallback - Mode: ");
-        Serial.print(fallbackDirection);
+        Serial.print(fallbackSteer);
         Serial.print("  Fallback Enabled: ");
         Serial.print(isInFallbackMode);
         Serial.print("\n");
