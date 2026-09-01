@@ -1,17 +1,48 @@
 /*
-A definition of necessary global parameters (as little as possible) and parameters
-(#define, for example the pin names)
 
-ENA - Takes the PWM of the left motor. Set it to 0 to disable or change the duty cycle to change speed.
-ENB - Same, for right motor
+█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
+█░░░░░░██████████░░░░░░█░░░░░░░░░░░░░░█░░░░░░░░░░░░░░█░░░░░░░░░░░░░░█░░░░░░░░░░░░░░█░░░░░░░░░░░░░░░░███░░░░░░░░░░░░░░█░░░░░░██████████░░░░░░█
+█░░▄▀░░░░░░░░░░░░░░▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀▄▀░░███░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀░░░░░░░░░░██░░▄▀░░█
+█░░▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀░░█░░▄▀░░░░░░░░░░█░░▄▀░░░░░░░░░░█░░▄▀░░░░░░▄▀░░█░░░░░░▄▀░░░░░░█░░▄▀░░░░░░░░▄▀░░███░░▄▀░░░░░░▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░██░░▄▀░░█
+█░░▄▀░░░░░░▄▀░░░░░░▄▀░░█░░▄▀░░█████████░░▄▀░░█████████░░▄▀░░██░░▄▀░░█████░░▄▀░░█████░░▄▀░░████░░▄▀░░███░░▄▀░░██░░▄▀░░█░░▄▀░░░░░░▄▀░░██░░▄▀░░█
+█░░▄▀░░██░░▄▀░░██░░▄▀░░█░░▄▀░░░░░░░░░░█░░▄▀░░█████████░░▄▀░░░░░░▄▀░░█████░░▄▀░░█████░░▄▀░░░░░░░░▄▀░░███░░▄▀░░██░░▄▀░░█░░▄▀░░██░░▄▀░░██░░▄▀░░█
+█░░▄▀░░██░░▄▀░░██░░▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀░░██░░░░░░█░░▄▀▄▀▄▀▄▀▄▀░░█████░░▄▀░░█████░░▄▀▄▀▄▀▄▀▄▀▄▀░░███░░▄▀░░██░░▄▀░░█░░▄▀░░██░░▄▀░░██░░▄▀░░█
+█░░▄▀░░██░░░░░░██░░▄▀░░█░░▄▀░░░░░░░░░░█░░▄▀░░██░░▄▀░░█░░▄▀░░░░░░▄▀░░█████░░▄▀░░█████░░▄▀░░░░░░▄▀░░░░███░░▄▀░░██░░▄▀░░█░░▄▀░░██░░▄▀░░██░░▄▀░░█
+█░░▄▀░░██████████░░▄▀░░█░░▄▀░░█████████░░▄▀░░██░░▄▀░░█░░▄▀░░██░░▄▀░░█████░░▄▀░░█████░░▄▀░░██░░▄▀░░█████░░▄▀░░██░░▄▀░░█░░▄▀░░██░░▄▀░░░░░░▄▀░░█
+█░░▄▀░░██████████░░▄▀░░█░░▄▀░░░░░░░░░░█░░▄▀░░░░░░▄▀░░█░░▄▀░░██░░▄▀░░█████░░▄▀░░█████░░▄▀░░██░░▄▀░░░░░░█░░▄▀░░░░░░▄▀░░█░░▄▀░░██░░▄▀▄▀▄▀▄▀▄▀░░█
+█░░▄▀░░██████████░░▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀░░██░░▄▀░░█████░░▄▀░░█████░░▄▀░░██░░▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀░░██░░░░░░░░░░▄▀░░█
+█░░░░░░██████████░░░░░░█░░░░░░░░░░░░░░█░░░░░░░░░░░░░░█░░░░░░██░░░░░░█████░░░░░░█████░░░░░░██░░░░░░░░░░█░░░░░░░░░░░░░░█░░░░░░██████████░░░░░░█
+█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
 
-IN1 - Right Forwards
-IN2 - Right Backwards
-IN3 - Left Forwards
-IN4 - Left Backwards
-IN3 + IN4 - 
 
-To BRAKE, enable all 4 pins.
+▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄  ▀█▀ █▀▀ ▄▀█ █▀▄▀█   ▄▄▄   █░█ █▀█ ▀█▀ █▀▀ █░░  ▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄
+▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄  ░█░ ██▄ █▀█ █░▀░█   ░░░   █▀█ █▄█ ░█░ ██▄ █▄▄  ▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄
+
+
+Megatron is the latest development in line-following technology, utilizing state-of-the-art
+    (For Hackathon 1) techniques to return to it's track upon loss of contact. Marvel at the
+    breakthroughs <bla bla bla>
+
+
+Authors:
+* 
+* 
+* 
+* 
+*
+*
+
+
+Pin Behaviour:
+    ENA - Takes the PWM of the left motor. Set it to 0 to disable or change the duty cycle to change speed.
+    ENB - Same, for right motor
+    IN1 - Right Forwards
+    IN2 - Right Backwards
+    IN3 - Left Forwards
+    IN4 - Left Backwards
+    LSL - Left Sensor (Analog Input)
+    LSR - Right Sensor (Analog Input)
+
 */
 
 // Dependencies
@@ -32,11 +63,11 @@ const int LSR_PIN = A1; //right light sensor
 
 
 
-/*
-A function: InitMotors(void) to be called in the setup() function to initialize the motors and
-their interface.
-*/
 
+// █▀ █▀▀ ▀█▀ █░█ █▀█
+// ▄█ ██▄ ░█░ █▄█ █▀▀
+
+// Set engine control pins to output and enable PWM signal for motors.
 void InitMotors() {
     pinMode(ENL_PIN, OUTPUT);
     pinMode(ENR_PIN, OUTPUT);
@@ -49,10 +80,12 @@ void InitMotors() {
     digitalWrite(ENR_PIN, HIGH);
 }
 
+// Serial, for debugging of sensor values
 void InitSerial() {
     Serial.begin(115200);
 }
 
+// Set sensor data pins to input
 void InitSensors() {
     pinMode(LSL_PIN, INPUT);
     pinMode(LSR_PIN, INPUT);
@@ -61,18 +94,26 @@ void InitSensors() {
 void setup() {
     InitMotors();
     InitSerial();
+    InitSensors();
 
+    // Just to make sure we didn't fry the Pico or something lol
     pinMode(LED_BUILTIN, OUTPUT);
+    digitalWrite(LED_BUILTIN, HIGH);
 }
 
 
 
 
 
+
+// █▀▄▀█ █▀█ ▀█▀ █▀█ █▀█   █▀▀ █▀█ █▄░█ ▀█▀ █▀█ █▀█ █░░
+// █░▀░█ █▄█ ░█░ █▄█ █▀▄   █▄▄ █▄█ █░▀█ ░█░ █▀▄ █▄█ █▄▄
+
 /*
-A function: “SetMotor(int PWM_val, bool BRAKE)” that takes a PWM value (values
-between - 255 and +255) and a BRAKE value, and controls the ENA, IN1, IN2 values of
-the left motor. Also make a copy of this function for the right motor.
+    Allows you to steer the robot. Takes a PWM value (0-255) and applies the necessary settings to each motor.
+    Provides functionality not used by the algorithm:
+        Supports going in reverse (PWM values between -255 and 0)
+        Supports forced braking
 */
 
 void SetLeftMotor(int PWM_val, bool BRAKE) {
@@ -97,6 +138,7 @@ void SetLeftMotor(int PWM_val, bool BRAKE) {
 
 }
 
+
 void SetRightMotor(int PWM_val, bool BRAKE) {
 
     // Overwrite the behaviour to force the engine to brake.
@@ -119,30 +161,30 @@ void SetRightMotor(int PWM_val, bool BRAKE) {
 
 }
 
-// bool led = false;
-// void blinkyStatus() {
 
-//     long time = millis();
-//     if (time/10.0 % 100 = 0) {
-//         led = !led;
-//     }
 
-// }
+// █▀ █▀▀ █▄░█ █▀ █▀█ █▀█   █▀▄ ▄▀█ ▀█▀ ▄▀█
+// ▄█ ██▄ █░▀█ ▄█ █▄█ █▀▄   █▄▀ █▀█ ░█░ █▀█
 
+
+// Last 10 readings for both sensors are stored in memory
 const int sampleCount = 10;
 int lastLSamples[sampleCount];
 int lastRSamples[sampleCount];
 
-
+// Latest average of each sensor's readings.
 int averageLSensor = 0;
 int averageRSensor = 0;
 
 void updateSensorData() {
 
+
     // Read sensor data
     int leftSensorReading = analogRead(LSL_PIN);
     int rightSensorReading = analogRead(LSR_PIN);
 
+
+    // Balance out the two sensors and translate from analog to PWM values
     leftSensorReading = map(leftSensorReading, 1023, 400, 0, 220);
     rightSensorReading = map(rightSensorReading - 250, 1023, 400, 0, 220);
 
@@ -150,7 +192,7 @@ void updateSensorData() {
     rightSensorReading = constrain(rightSensorReading, 0, 255);
 
 
-    // Update sample base
+    // Update sample base (shift all older readings further down the array(s))
     for ( int i = 0; i < sampleCount-2; i++ ) {
         lastLSamples[i+1] = lastLSamples[i];
         lastRSamples[i+1] = lastRSamples[i];
@@ -170,19 +212,27 @@ void updateSensorData() {
     averageLSensor = totalL / sampleCount;
     averageRSensor = totalR / sampleCount;
 
+
 }
 
-// 0 = left, 1 = straight, 2 = right
 
-bool fallbackBehaviour = false;
-int fallbackDirection = 1;
-const int fallbackDirectionThreshold = 100;
-const int fallbackLightThreshold = 50;
+
+// █▀▀ ▄▀█ █░░ █░░ █▄▄ ▄▀█ █▀▀ █▄▀   █▀▄▀█ █▀█ █▀▄ █▀▀
+// █▀░ █▀█ █▄▄ █▄▄ █▄█ █▀█ █▄▄ █░█   █░▀░█ █▄█ █▄▀ ██▄
+
+bool isInFallbackMode = false;  // whether it follows the line or continues to steer in the old direction
+int fallbackDirection = 1;      // 0 = left, 1 = straight, 2 = right
+const int fallbackModeThreshold = 5;        // how many times must the robot think the line is missing before it goes into fallback mode
+const int fallbackDirectionThreshold = 50;  // difference between motor PWMs required to consider the robot as steering
+const int fallbackLowLightThreshold = 50;   // minimum sensor reading (in PWM form) required to consider the robot as lost
+                                            //      but won't it just stop? no: robot has momentum!! :3
+const int fallbackHighLightThreshold = 220; // in case the robot only sees the line (so theres a bunch of branches everywhere)
+                                            //      also fall back and (potentially force to) continue straight for a while
 
 
 void computeFallbackDirection() {
 
-    if (fallbackBehaviour) return;
+    if (isInFallbackMode) return;
 
     int tendency = averageRSensor - averageLSensor;
     if (tendency > fallbackDirectionThreshold) fallbackDirection = 2;
@@ -190,34 +240,55 @@ void computeFallbackDirection() {
     else fallbackDirection = 1;
 }
 
+void fallbackMovement() {
+    switch(fallbackDirection) {
+        case 0:
+            SetLeftMotor(0, false);
+            SetRightMotor(200, false);
+            break;
+        case 2:
+            SetLeftMotor(200, false);
+            SetRightMotor(0, false);
+            break;
+        default:
+            SetLeftMotor(200, false);
+            SetRightMotor(200, false);
+            break;
+    }
+}
+
+
+
+// █▀▄▀█ █▀█ █░█ █▀▀ █▀▄▀█ █▀▀ █▄░█ ▀█▀   █░░ █▀█ █▀█ █▀█
+// █░▀░█ █▄█ ▀▄▀ ██▄ █░▀░█ ██▄ █░▀█ ░█░   █▄▄ █▄█ █▄█ █▀▀
+
 void loop() {
 
-    updateSensorData();
+    // Compute new average PWM values from the sensors
+    updateSensorData(); 
+    
+    // Track how many times the robot considered itself lost (either in the dark or with too many lines)
+    static int lostCount; 
+    int averageReading = (averageLSensor+averageRSensor)/2.0;
+    if (averageReading < fallbackLowLightThreshold || averageReading > fallbackHighLightThreshold) lostCount++;
+    else lostCount = 0;
+    
+    // If it's been lost for longer than the threshold, go in fallback mode.
+    if (lostCount > fallbackModeThreshold) {
+        isInFallbackMode = true;
+    } else if (lostCount < 1) {
+        computeFallbackDirection(); // Only try to determine the turning direction when the robot still sees (some) of the line
+    }
 
-    fallbackBehaviour = (averageLSensor+averageRSensor)/2.0 < fallbackLightThreshold;
-
-    if (fallbackBehaviour) {
-        switch(fallbackDirection) {
-            case 0:
-                SetLeftMotor(0, false);
-                SetRightMotor(200, false);
-                break;
-            case 2:
-                SetLeftMotor(200, false);
-                SetRightMotor(0, false);
-                break;
-            default:
-                SetLeftMotor(200, false);
-                SetRightMotor(200, false);
-                break;
-        }
+    // Decide on movement mode (fallback vs normal)
+    if (isInFallbackMode) {
+        fallbackMovement();
     } else {
         // Engage motors based on the average of multiple samples
         SetLeftMotor(averageLSensor, false);
         SetRightMotor(averageRSensor, false);
 
         // Only compute fallback mode if actively following the line
-        // TODO: Add a 250ms delay between re-computations.
         computeFallbackDirection();
     }
 
@@ -238,7 +309,7 @@ void loop() {
         Serial.print("Fallback - Mode: ");
         Serial.print(fallbackDirection);
         Serial.print("  Fallback Enabled: ");
-        Serial.print(fallbackBehaviour);
+        Serial.print(isInFallbackMode);
         Serial.print("\n");
     }
 
